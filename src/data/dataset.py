@@ -17,7 +17,7 @@ def build_class_to_idx(root_path):
         for idx, class_name in enumerate(sorted(class_names))
     }
 
-class DollarStreetDataset(Dataset):
+class MyDataset(Dataset):
     def __init__(
         self,
         root_path,
@@ -27,6 +27,7 @@ class DollarStreetDataset(Dataset):
 
         self.root_path = Path(root_path)
         self.class_to_idx = class_to_idx
+        self.transform = transform
         self.samples = []
     
         for region in self.root_path.iterdir():
@@ -53,10 +54,11 @@ class DollarStreetDataset(Dataset):
     def __getitem__(self, idx):
         sample = self.samples[idx]
 
-        image = Image.open(sample['image_path']).convert("RGB")
+        image = Image.open(sample["image_path"]).convert("RGB")
         label = sample["label"]
+        region = sample["region"]
 
         if self.transform is not None:
             image = self.transform(image)
 
-        return image, label
+        return image, label, region
