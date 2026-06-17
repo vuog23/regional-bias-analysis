@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def class_to_idx(root_path):
+def build_class_to_idx(root_path):
     root_path = Path(root_path)
     class_names = set()
 
