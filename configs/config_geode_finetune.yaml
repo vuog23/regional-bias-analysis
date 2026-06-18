@@ -24,7 +24,7 @@ paths:
 
 model:
   # Available keys:
-  # convnextv2_base, swinv2_base, deit3_base, dinov2_vitb14
+  # convnextv2_base, swinv2_base, deit3_base, dinov2_vitb14, resnet50_base224, clip_vitb16_224
   key: convnextv2_base
 
   # Set name directly if you want another timm model.

@@ -1,0 +1,17 @@
+{
+  "loss": 0.7972117564567559,
+  "object_acc": 0.9591404546870134,
+  "region_object_acc": {
+    "Africa": 0.9549776286353467,
+    "Americas": 0.9606332905434317,
+    "EastAsia": 0.9585600669736292,
+    "Europe": 0.9674373168349072,
+    "SouthEastAsia": 0.9451809387316374,
+    "WestAsia": 0.973030142781597
+  },
+  "best_region": "WestAsia",
+  "worst_region": "SouthEastAsia",
+  "best_region_acc": 0.973030142781597,
+  "worst_region_acc": 0.9451809387316374,
+  "region_bias_gap": 0.02784920404995961
+}

@@ -55,9 +55,14 @@ except ImportError as exc:
 # -----------------------------------------------------------------------------
 MODEL_CONFIGS = {
     "convnextv2_base": "convnextv2_base.fcmae_ft_in22k_in1k",
-    "swinv2_base": "swinv2_base_window12to24_192to384.ms_in22k_ft_in1k",
+    "swinv2_base": "swin_base_patch4_window7_224.ms_in22k_ft_in1k",
     "deit3_base": "deit3_base_patch16_224.fb_in22k_ft_in1k",
     "dinov2_vitb14": "vit_base_patch14_dinov2.lvd142m",
+    "resnet50_base224": "resnet50.a2_in1k",
+    "clip_vitb16_224": "vit_base_patch16_clip_224.openai_ft_in12k_in1k",
+    "mae_vitb16_224": "vit_base_patch16_224.mae",
+    "siglip_vitb16_224": "vit_base_patch16_siglip_224.webli",
+    "maxvit_base_224": "maxvit_base_tf_224.in1k",
 }
 
 DEFAULT_CONFIG: Dict[str, Any] = {
@@ -320,12 +325,20 @@ def create_model(
     drop_path_rate: float = 0.1,
     data_parallel: bool = False,
 ) -> nn.Module:
-    model = timm.create_model(
-        model_name,
-        pretrained=pretrained,
-        num_classes=num_classes,
-        drop_path_rate=drop_path_rate,
-    )
+    if "dinov2" in model_name or "dinov2" in model_name.lower():
+            model = timm.create_model(
+            model_name,
+            pretrained=pretrained,
+            num_classes=num_classes,
+            drop_path_rate=drop_path_rate,
+        )
+    else:
+        model = timm.create_model(
+            model_name,
+            pretrained=pretrained,
+            num_classes=num_classes,
+            drop_path_rate=drop_path_rate,
+        )
 
     model = model.to(device)
 
