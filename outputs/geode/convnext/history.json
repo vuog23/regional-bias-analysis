@@ -1,249 +1,192 @@
 [
   {
     "epoch": 1,
-    "lr": 2.98214809386295e-05,
-    "train_loss": 1.1213119807227983,
-    "train_object_acc": 0.8833915145005371,
-    "val_loss": 0.8226046306841841,
-    "val_object_acc": 0.9523364485981308,
+    "lr": 2.929031948627973e-05,
+    "train_loss": 1.1208384012049175,
+    "train_object_acc": 0.8835593447905478,
+    "val_loss": 0.8220929899393955,
+    "val_object_acc": 0.9525856697819315,
     "val_region_object_acc": {
-      "Africa": 0.9474125874125874,
-      "Americas": 0.9482020547945206,
-      "EastAsia": 0.9543551088777219,
-      "Europe": 0.9618892508143323,
-      "SouthEastAsia": 0.9469534050179211,
-      "WestAsia": 0.9566367001586462
+      "Africa": 0.9468531468531468,
+      "Americas": 0.9456335616438356,
+      "EastAsia": 0.9547738693467337,
+      "Europe": 0.9631921824104235,
+      "SouthEastAsia": 0.9480286738351255,
+      "WestAsia": 0.9587519830777367
     },
     "val_best_region": "Europe",
-    "val_worst_region": "SouthEastAsia",
-    "val_region_bias_gap": 0.014935845796411162
+    "val_worst_region": "Americas",
+    "val_region_bias_gap": 0.017558620766587874
   },
   {
     "epoch": 2,
-    "lr": 2.929031948627973e-05,
-    "train_loss": 0.7981805762338074,
-    "train_object_acc": 0.9636815252416756,
-    "val_loss": 0.8064360531319711,
-    "val_object_acc": 0.9569470404984424,
+    "lr": 2.7230746418436738e-05,
+    "train_loss": 0.7974416828693304,
+    "train_object_acc": 0.9642857142857143,
+    "val_loss": 0.8055345794344988,
+    "val_object_acc": 0.95601246105919,
     "val_region_object_acc": {
-      "Africa": 0.9493706293706293,
-      "Americas": 0.959332191780822,
-      "EastAsia": 0.9564489112227805,
-      "Europe": 0.9690553745928339,
-      "SouthEastAsia": 0.9494623655913978,
-      "WestAsia": 0.9603384452670545
+      "Africa": 0.9465734265734266,
+      "Americas": 0.9537671232876712,
+      "EastAsia": 0.957286432160804,
+      "Europe": 0.9693811074918567,
+      "SouthEastAsia": 0.9498207885304659,
+      "WestAsia": 0.9624537281861449
     },
     "val_best_region": "Europe",
     "val_worst_region": "Africa",
-    "val_region_bias_gap": 0.019684745222204536
+    "val_region_bias_gap": 0.022807680918430107
   },
   {
     "epoch": 3,
-    "lr": 2.8419594600731336e-05,
-    "train_loss": 0.7585406280998,
-    "train_object_acc": 0.9740870032223415,
-    "val_loss": 0.8021065114220355,
-    "val_object_acc": 0.9573831775700935,
+    "lr": 2.402288615824086e-05,
+    "train_loss": 0.7553815650248502,
+    "train_object_acc": 0.9749932867883996,
+    "val_loss": 0.7974409460055866,
+    "val_object_acc": 0.9593146417445483,
     "val_region_object_acc": {
-      "Africa": 0.9518881118881118,
-      "Americas": 0.9576198630136986,
-      "EastAsia": 0.9518425460636516,
-      "Europe": 0.9684039087947883,
-      "SouthEastAsia": 0.9551971326164874,
-      "WestAsia": 0.9598096245372819
+      "Africa": 0.953006993006993,
+      "Americas": 0.9597602739726028,
+      "EastAsia": 0.9556113902847572,
+      "Europe": 0.9700325732899023,
+      "SouthEastAsia": 0.9544802867383513,
+      "WestAsia": 0.965097831835008
     },
     "val_best_region": "Europe",
-    "val_worst_region": "EastAsia",
-    "val_region_bias_gap": 0.01656136273113673
+    "val_worst_region": "Africa",
+    "val_region_bias_gap": 0.017025580282909347
   },
   {
     "epoch": 4,
-    "lr": 2.723074641843674e-05,
-    "train_loss": 0.7359799320792537,
-    "train_object_acc": 0.9817400644468314,
-    "val_loss": 0.7988091304666157,
-    "val_object_acc": 0.958006230529595,
+    "lr": 1.9980746418436738e-05,
+    "train_loss": 0.731571764490146,
+    "train_object_acc": 0.9837540279269602,
+    "val_loss": 0.7910663992222224,
+    "val_object_acc": 0.9606230529595016,
     "val_region_object_acc": {
-      "Africa": 0.953006993006993,
-      "Americas": 0.9576198630136986,
-      "EastAsia": 0.9560301507537688,
-      "Europe": 0.970358306188925,
-      "SouthEastAsia": 0.9501792114695341,
-      "WestAsia": 0.9619249074563723
+      "Africa": 0.9558041958041958,
+      "Americas": 0.961472602739726,
+      "EastAsia": 0.9556113902847572,
+      "Europe": 0.9716612377850163,
+      "SouthEastAsia": 0.9551971326164874,
+      "WestAsia": 0.965097831835008
     },
     "val_best_region": "Europe",
     "val_worst_region": "SouthEastAsia",
-    "val_region_bias_gap": 0.020179094719390944
+    "val_region_bias_gap": 0.01646410516852892
   },
   {
     "epoch": 5,
-    "lr": 2.575304832720494e-05,
-    "train_loss": 0.72231897362833,
-    "train_object_acc": 0.9856672932330827,
-    "val_loss": 0.7948489977191913,
-    "val_object_acc": 0.9590031152647975,
-    "val_region_object_acc": {
-      "Africa": 0.9496503496503497,
-      "Americas": 0.9571917808219178,
-      "EastAsia": 0.957286432160804,
-      "Europe": 0.9745928338762215,
-      "SouthEastAsia": 0.9548387096774194,
-      "WestAsia": 0.9619249074563723
-    },
-    "val_best_region": "Europe",
-    "val_worst_region": "Africa",
-    "val_region_bias_gap": 0.024942484225871864
-  },
-  {
-    "epoch": 6,
-    "lr": 2.4022886158240864e-05,
-    "train_loss": 0.712904310508138,
-    "train_object_acc": 0.9889903329752954,
-    "val_loss": 0.8007373367366019,
-    "val_object_acc": 0.9602492211838006,
-    "val_region_object_acc": {
-      "Africa": 0.9544055944055944,
-      "Americas": 0.9576198630136986,
-      "EastAsia": 0.9539363484087102,
-      "Europe": 0.9716612377850163,
-      "SouthEastAsia": 0.9577060931899641,
-      "WestAsia": 0.967741935483871
-    },
-    "val_best_region": "Europe",
-    "val_worst_region": "EastAsia",
-    "val_region_bias_gap": 0.01772488937630612
-  },
-  {
-    "epoch": 7,
-    "lr": 2.2082862246223432e-05,
-    "train_loss": 0.7060977941424967,
-    "train_object_acc": 0.9908364661654135,
-    "val_loss": 0.8060669039417279,
-    "val_object_acc": 0.9573831775700935,
-    "val_region_object_acc": {
-      "Africa": 0.9502097902097902,
-      "Americas": 0.9601883561643836,
-      "EastAsia": 0.9530988274706867,
-      "Europe": 0.9684039087947883,
-      "SouthEastAsia": 0.9487455197132616,
-      "WestAsia": 0.967741935483871
-    },
-    "val_best_region": "Europe",
-    "val_worst_region": "SouthEastAsia",
-    "val_region_bias_gap": 0.019658389081526728
-  },
-  {
-    "epoch": 8,
-    "lr": 1.998074641843674e-05,
-    "train_loss": 0.7018112741914907,
-    "train_object_acc": 0.9925483351235231,
-    "val_loss": 0.8028120287185146,
-    "val_object_acc": 0.9593146417445483,
-    "val_region_object_acc": {
-      "Africa": 0.9516083916083916,
-      "Americas": 0.9597602739726028,
-      "EastAsia": 0.9581239530988275,
-      "Europe": 0.9713355048859935,
-      "SouthEastAsia": 0.9530465949820789,
-      "WestAsia": 0.9645690111052353
-    },
-    "val_best_region": "Europe",
-    "val_worst_region": "Africa",
-    "val_region_bias_gap": 0.019727113277601904
-  },
-  {
-    "epoch": 9,
-    "lr": 1.776829974308335e-05,
-    "train_loss": 0.6979205405417626,
-    "train_object_acc": 0.9943609022556391,
-    "val_loss": 0.8035293845075685,
+    "lr": 1.55e-05,
+    "train_loss": 0.7170870190148195,
+    "train_object_acc": 0.9883525778732546,
+    "val_loss": 0.7933944583013421,
     "val_object_acc": 0.9601246105919004,
     "val_region_object_acc": {
       "Africa": 0.9502097902097902,
-      "Americas": 0.961472602739726,
-      "EastAsia": 0.9568676716917923,
+      "Americas": 0.9619006849315068,
+      "EastAsia": 0.9581239530988275,
       "Europe": 0.9726384364820847,
-      "SouthEastAsia": 0.9530465949820789,
-      "WestAsia": 0.9714436805922793
+      "SouthEastAsia": 0.953763440860215,
+      "WestAsia": 0.9682707562136436
     },
     "val_best_region": "Europe",
     "val_worst_region": "Africa",
     "val_region_bias_gap": 0.02242864627229446
   },
   {
-    "epoch": 10,
-    "lr": 1.55e-05,
-    "train_loss": 0.694251756278836,
-    "train_object_acc": 0.9949986573576799,
-    "val_loss": 0.8072055778473709,
-    "val_object_acc": 0.9593146417445483,
-    "val_region_object_acc": {
-      "Africa": 0.9552447552447553,
-      "Americas": 0.9580479452054794,
-      "EastAsia": 0.9581239530988275,
-      "Europe": 0.9706840390879479,
-      "SouthEastAsia": 0.9501792114695341,
-      "WestAsia": 0.965097831835008
-    },
-    "val_best_region": "Europe",
-    "val_worst_region": "SouthEastAsia",
-    "val_region_bias_gap": 0.020504827618413768
-  },
-  {
-    "epoch": 11,
-    "lr": 1.3231700256916657e-05,
-    "train_loss": 0.6915918017560506,
-    "train_object_acc": 0.9963412996777659,
-    "val_loss": 0.800273618958078,
-    "val_object_acc": 0.9624922118380063,
-    "val_region_object_acc": {
-      "Africa": 0.9558041958041958,
-      "Americas": 0.9631849315068494,
-      "EastAsia": 0.9602177554438861,
-      "Europe": 0.9762214983713355,
-      "SouthEastAsia": 0.9541218637992831,
-      "WestAsia": 0.9672131147540983
-    },
-    "val_best_region": "Europe",
-    "val_worst_region": "SouthEastAsia",
-    "val_region_bias_gap": 0.02209963457205244
-  },
-  {
-    "epoch": 12,
+    "epoch": 6,
     "lr": 1.1019253581563265e-05,
-    "train_loss": 0.6897571220049669,
-    "train_object_acc": 0.9965091299677766,
-    "val_loss": 0.8009223023679026,
-    "val_object_acc": 0.9622429906542056,
+    "train_loss": 0.7066610811476293,
+    "train_object_acc": 0.9917763157894737,
+    "val_loss": 0.7959100011056086,
+    "val_object_acc": 0.9616822429906542,
     "val_region_object_acc": {
-      "Africa": 0.9577622377622378,
-      "Americas": 0.959332191780822,
-      "EastAsia": 0.9610552763819096,
-      "Europe": 0.9726384364820847,
-      "SouthEastAsia": 0.956989247311828,
-      "WestAsia": 0.9666842940243258
+      "Africa": 0.9586013986013986,
+      "Americas": 0.9636130136986302,
+      "EastAsia": 0.9556113902847572,
+      "Europe": 0.9736156351791531,
+      "SouthEastAsia": 0.9512544802867383,
+      "WestAsia": 0.9687995769434162
     },
     "val_best_region": "Europe",
     "val_worst_region": "SouthEastAsia",
-    "val_region_bias_gap": 0.015649189170256705
+    "val_region_bias_gap": 0.022361154892414747
   },
   {
-    "epoch": 13,
-    "lr": 8.917137753776574e-06,
-    "train_loss": 0.6857572353488008,
-    "train_object_acc": 0.9977175080558539,
-    "val_loss": 0.8036425439071061,
-    "val_object_acc": 0.9614953271028037,
+    "epoch": 7,
+    "lr": 6.977113841759142e-06,
+    "train_loss": 0.6986966492282076,
+    "train_object_acc": 0.9943944683136412,
+    "val_loss": 0.7931042684350058,
+    "val_object_acc": 0.9617445482866044,
     "val_region_object_acc": {
-      "Africa": 0.9552447552447553,
-      "Americas": 0.961472602739726,
-      "EastAsia": 0.9585427135678392,
-      "Europe": 0.9723127035830619,
-      "SouthEastAsia": 0.9555555555555556,
-      "WestAsia": 0.9682707562136436
+      "Africa": 0.9566433566433566,
+      "Americas": 0.9653253424657534,
+      "EastAsia": 0.9543551088777219,
+      "Europe": 0.9736156351791531,
+      "SouthEastAsia": 0.9544802867383513,
+      "WestAsia": 0.967741935483871
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "EastAsia",
+    "val_region_bias_gap": 0.019260526301431158
+  },
+  {
+    "epoch": 8,
+    "lr": 3.769253581563264e-06,
+    "train_loss": 0.6943772040171474,
+    "train_object_acc": 0.9960392051557465,
+    "val_loss": 0.78978470709465,
+    "val_object_acc": 0.9638006230529595,
+    "val_region_object_acc": {
+      "Africa": 0.9572027972027972,
+      "Americas": 0.9670376712328768,
+      "EastAsia": 0.958961474036851,
+      "Europe": 0.9762214983713355,
+      "SouthEastAsia": 0.953763440860215,
+      "WestAsia": 0.973030142781597
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "SouthEastAsia",
+    "val_region_bias_gap": 0.02245805751112051
+  },
+  {
+    "epoch": 9,
+    "lr": 1.7096805137202739e-06,
+    "train_loss": 0.6923961503037065,
+    "train_object_acc": 0.9966769602577873,
+    "val_loss": 0.7868029918848911,
+    "val_object_acc": 0.964361370716511,
+    "val_region_object_acc": {
+      "Africa": 0.9572027972027972,
+      "Americas": 0.9670376712328768,
+      "EastAsia": 0.9568676716917923,
+      "Europe": 0.9775244299674267,
+      "SouthEastAsia": 0.9580645161290322,
+      "WestAsia": 0.9719725013220518
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "EastAsia",
+    "val_region_bias_gap": 0.0206567582756344
+  },
+  {
+    "epoch": 10,
+    "lr": 1e-06,
+    "train_loss": 0.6903260024994707,
+    "train_object_acc": 0.9971804511278195,
+    "val_loss": 0.7873520502123135,
+    "val_object_acc": 0.9644859813084112,
+    "val_region_object_acc": {
+      "Africa": 0.9555244755244755,
+      "Americas": 0.96875,
+      "EastAsia": 0.9581239530988275,
+      "Europe": 0.9778501628664495,
+      "SouthEastAsia": 0.9580645161290322,
+      "WestAsia": 0.9719725013220518
     },
     "val_best_region": "Europe",
     "val_worst_region": "Africa",
-    "val_region_bias_gap": 0.017067948338306604
+    "val_region_bias_gap": 0.022325687341974043
   }
 ]

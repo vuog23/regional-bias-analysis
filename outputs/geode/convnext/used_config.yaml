@@ -39,7 +39,7 @@ transforms:
   - 0.224
   - 0.225
 training:
-  epochs: 20
+  epochs: 10
   batch_size: 32
   num_workers: 4
   optimizer: adam
