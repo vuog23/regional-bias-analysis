@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\emergencystretch=3em
+\graphicspath{{../derived/figures/}{figures/}}
+\makeatletter
+\def\input@path{{sections/}{tables/}}
+\makeatother
+
+\title{Regional Bias in Pretrained and Finetuned Vision Models on GeoDE and Dollar Street}
+\author{TODO: author names}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+TODO: evidence needed. Write the abstract only after results and claims are validated.
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_problem_definition}
+\input{sections/04_datasets}
+\input{sections/05_models}
+\input{sections/06_methodology}
+\input{sections/07_experiments}
+\input{sections/08_results}
+\input{sections/09_analysis_discussion}
+\input{sections/10_limitations}
+\input{sections/11_conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

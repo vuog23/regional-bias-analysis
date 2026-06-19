@@ -1,0 +1,5 @@
+dataset,finetune,mean_object_acc,mean_worst_region_acc,mean_best_region_acc,mean_region_bias_gap,n
+dollarstreet,no,0.0192,0.0148,0.0243,0.0095,9.0000
+dollarstreet,yes,0.7211,0.6692,0.7580,0.0889,9.0000
+geode,no,0.0266,0.0206,0.0321,0.0115,9.0000
+geode,yes,0.9508,0.9396,0.9630,0.0234,9.0000

@@ -1,0 +1,18 @@
+% Draft status: V0
+% Evidence status: checked where possible; TODOs mark missing evidence.
+\section{Experiments}
+
+The experiments analyzed in this paper consist of already-computed external result files. No new model training is performed inside the paper workspace. Finetuned metrics come from each model's \texttt{test\_results.json} file under the dataset-specific result directory. Pretrained ImageNet metrics come from JSON files under \texttt{results/imagenet}. The paper workspace reads those files, normalizes the metrics, validates the resulting table, and creates derived tables and figures.
+
+The normalized table contains 36 rows: 2 datasets, 9 models, and 2 evaluation settings. The validation step checks that each expected dataset-model-setting combination is present, that \texttt{finetune} is only \texttt{yes} or \texttt{no}, and that the regional bias gap is numerically consistent with the difference between the best-region and worst-region accuracies. The validation also checks that accidental unsupported evaluation columns are not present.
+
+The table-generation scripts produce paper-ready CSV and LaTeX tables. The main tables used in the current draft are the overall metrics table, the pretrained-versus-finetuned comparison table, the regional-gap ranking table, the best/worst region table, the dataset-level summary table, and the model-level summary table. The figure script produces five diagnostic plots: object accuracy by model and dataset, regional bias gap by model and dataset, pretrained-versus-finetuned object accuracy, pretrained-versus-finetuned regional bias gap, and object accuracy versus regional bias gap.
+
+\input{dataset_level_summary_table}
+
+\input{model_level_summary_table}
+
+The dataset-level summary in Table~\ref{tab:dataset-level-summary-table} is useful for checking the broad scale of the results before interpreting individual models. In the finetuned setting, mean object accuracy is 0.7211 on Dollar Street and 0.9508 on GeoDE. In the pretrained setting, mean object accuracy is much lower: 0.0192 on Dollar Street and 0.0266 on GeoDE. The regional bias gap shows a different pattern: in the finetuned setting, the mean gap is 0.0889 on Dollar Street and 0.0234 on GeoDE; in the pretrained setting, the mean gap is 0.0095 on Dollar Street and 0.0115 on GeoDE.
+
+Table~\ref{tab:model-level-summary-table} summarizes model-level averages across the two datasets for each evaluation setting. These averages are descriptive only. They are useful for orienting the reader, but the main claims should still be checked against dataset-specific rows because the Dollar Street and GeoDE patterns differ substantially. TODO: add a family-level summary table for CNN, transformer, self-supervised, and vision-language groups.
+

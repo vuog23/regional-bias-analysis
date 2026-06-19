@@ -1,0 +1,12 @@
+% Draft status: V0
+% Evidence status: checked where possible; TODOs mark missing evidence.
+\section{Conclusion}
+
+This first draft analyzes regional bias in pretrained and finetuned vision models on GeoDE and Dollar Street. Using the normalized result table, the draft finds that finetuning is associated with much higher object accuracy for every model-dataset pair. It also finds that finetuning is associated with a larger regional bias gap for every model-dataset pair. This suggests that higher aggregate object accuracy does not automatically imply lower regional disparity.
+
+The dataset comparison is also important. Finetuned GeoDE results show higher mean object accuracy and lower mean regional bias gap than finetuned Dollar Street results. Dollar Street finetuned results show a consistent best-region and worst-region pattern across all evaluated models, with \texttt{eu} as the best region and \texttt{af} as the worst region. GeoDE finetuned results show smaller gaps, with most models identifying WestAsia as the best region and SouthEastAsia as the worst region.
+
+Across models, ConvNeXt has the highest finetuned object accuracy on both datasets, while MAE has the lowest finetuned regional bias gap on both datasets. This indicates that the model with the strongest object accuracy is not necessarily the model with the smallest regional gap. The paper therefore argues for reporting object accuracy, best-region accuracy, worst-region accuracy, and regional bias gap together.
+
+These findings remain preliminary. The draft does not establish causal mechanisms, and several evidence gaps remain around local dataset statistics, pretrained classifier-head details, and model-family interpretation. The next version should expand the literature review, add a local dataset audit, add a family-level summary table, and revise the discussion after those evidence gaps are addressed.
+

@@ -1,0 +1,192 @@
+[
+  {
+    "epoch": 1,
+    "lr": 2.929031948627973e-05,
+    "train_loss": 1.1208384012049175,
+    "train_object_acc": 0.8835593447905478,
+    "val_loss": 0.8220929899393955,
+    "val_object_acc": 0.9525856697819315,
+    "val_region_object_acc": {
+      "Africa": 0.9468531468531468,
+      "Americas": 0.9456335616438356,
+      "EastAsia": 0.9547738693467337,
+      "Europe": 0.9631921824104235,
+      "SouthEastAsia": 0.9480286738351255,
+      "WestAsia": 0.9587519830777367
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "Americas",
+    "val_region_bias_gap": 0.017558620766587874
+  },
+  {
+    "epoch": 2,
+    "lr": 2.7230746418436738e-05,
+    "train_loss": 0.7974416828693304,
+    "train_object_acc": 0.9642857142857143,
+    "val_loss": 0.8055345794344988,
+    "val_object_acc": 0.95601246105919,
+    "val_region_object_acc": {
+      "Africa": 0.9465734265734266,
+      "Americas": 0.9537671232876712,
+      "EastAsia": 0.957286432160804,
+      "Europe": 0.9693811074918567,
+      "SouthEastAsia": 0.9498207885304659,
+      "WestAsia": 0.9624537281861449
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "Africa",
+    "val_region_bias_gap": 0.022807680918430107
+  },
+  {
+    "epoch": 3,
+    "lr": 2.402288615824086e-05,
+    "train_loss": 0.7553815650248502,
+    "train_object_acc": 0.9749932867883996,
+    "val_loss": 0.7974409460055866,
+    "val_object_acc": 0.9593146417445483,
+    "val_region_object_acc": {
+      "Africa": 0.953006993006993,
+      "Americas": 0.9597602739726028,
+      "EastAsia": 0.9556113902847572,
+      "Europe": 0.9700325732899023,
+      "SouthEastAsia": 0.9544802867383513,
+      "WestAsia": 0.965097831835008
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "Africa",
+    "val_region_bias_gap": 0.017025580282909347
+  },
+  {
+    "epoch": 4,
+    "lr": 1.9980746418436738e-05,
+    "train_loss": 0.731571764490146,
+    "train_object_acc": 0.9837540279269602,
+    "val_loss": 0.7910663992222224,
+    "val_object_acc": 0.9606230529595016,
+    "val_region_object_acc": {
+      "Africa": 0.9558041958041958,
+      "Americas": 0.961472602739726,
+      "EastAsia": 0.9556113902847572,
+      "Europe": 0.9716612377850163,
+      "SouthEastAsia": 0.9551971326164874,
+      "WestAsia": 0.965097831835008
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "SouthEastAsia",
+    "val_region_bias_gap": 0.01646410516852892
+  },
+  {
+    "epoch": 5,
+    "lr": 1.55e-05,
+    "train_loss": 0.7170870190148195,
+    "train_object_acc": 0.9883525778732546,
+    "val_loss": 0.7933944583013421,
+    "val_object_acc": 0.9601246105919004,
+    "val_region_object_acc": {
+      "Africa": 0.9502097902097902,
+      "Americas": 0.9619006849315068,
+      "EastAsia": 0.9581239530988275,
+      "Europe": 0.9726384364820847,
+      "SouthEastAsia": 0.953763440860215,
+      "WestAsia": 0.9682707562136436
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "Africa",
+    "val_region_bias_gap": 0.02242864627229446
+  },
+  {
+    "epoch": 6,
+    "lr": 1.1019253581563265e-05,
+    "train_loss": 0.7066610811476293,
+    "train_object_acc": 0.9917763157894737,
+    "val_loss": 0.7959100011056086,
+    "val_object_acc": 0.9616822429906542,
+    "val_region_object_acc": {
+      "Africa": 0.9586013986013986,
+      "Americas": 0.9636130136986302,
+      "EastAsia": 0.9556113902847572,
+      "Europe": 0.9736156351791531,
+      "SouthEastAsia": 0.9512544802867383,
+      "WestAsia": 0.9687995769434162
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "SouthEastAsia",
+    "val_region_bias_gap": 0.022361154892414747
+  },
+  {
+    "epoch": 7,
+    "lr": 6.977113841759142e-06,
+    "train_loss": 0.6986966492282076,
+    "train_object_acc": 0.9943944683136412,
+    "val_loss": 0.7931042684350058,
+    "val_object_acc": 0.9617445482866044,
+    "val_region_object_acc": {
+      "Africa": 0.9566433566433566,
+      "Americas": 0.9653253424657534,
+      "EastAsia": 0.9543551088777219,
+      "Europe": 0.9736156351791531,
+      "SouthEastAsia": 0.9544802867383513,
+      "WestAsia": 0.967741935483871
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "EastAsia",
+    "val_region_bias_gap": 0.019260526301431158
+  },
+  {
+    "epoch": 8,
+    "lr": 3.769253581563264e-06,
+    "train_loss": 0.6943772040171474,
+    "train_object_acc": 0.9960392051557465,
+    "val_loss": 0.78978470709465,
+    "val_object_acc": 0.9638006230529595,
+    "val_region_object_acc": {
+      "Africa": 0.9572027972027972,
+      "Americas": 0.9670376712328768,
+      "EastAsia": 0.958961474036851,
+      "Europe": 0.9762214983713355,
+      "SouthEastAsia": 0.953763440860215,
+      "WestAsia": 0.973030142781597
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "SouthEastAsia",
+    "val_region_bias_gap": 0.02245805751112051
+  },
+  {
+    "epoch": 9,
+    "lr": 1.7096805137202739e-06,
+    "train_loss": 0.6923961503037065,
+    "train_object_acc": 0.9966769602577873,
+    "val_loss": 0.7868029918848911,
+    "val_object_acc": 0.964361370716511,
+    "val_region_object_acc": {
+      "Africa": 0.9572027972027972,
+      "Americas": 0.9670376712328768,
+      "EastAsia": 0.9568676716917923,
+      "Europe": 0.9775244299674267,
+      "SouthEastAsia": 0.9580645161290322,
+      "WestAsia": 0.9719725013220518
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "EastAsia",
+    "val_region_bias_gap": 0.0206567582756344
+  },
+  {
+    "epoch": 10,
+    "lr": 1e-06,
+    "train_loss": 0.6903260024994707,
+    "train_object_acc": 0.9971804511278195,
+    "val_loss": 0.7873520502123135,
+    "val_object_acc": 0.9644859813084112,
+    "val_region_object_acc": {
+      "Africa": 0.9555244755244755,
+      "Americas": 0.96875,
+      "EastAsia": 0.9581239530988275,
+      "Europe": 0.9778501628664495,
+      "SouthEastAsia": 0.9580645161290322,
+      "WestAsia": 0.9719725013220518
+    },
+    "val_best_region": "Europe",
+    "val_worst_region": "Africa",
+    "val_region_bias_gap": 0.022325687341974043
+  }
+]

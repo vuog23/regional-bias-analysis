@@ -1,0 +1,81 @@
+% Draft status: V0
+% Evidence status: checked where possible; TODOs mark missing evidence.
+\section{Results}
+
+\input{overall_metrics_table}
+
+\input{pretrained_vs_finetuned_comparison_table}
+
+\input{region_bias_gap_ranking_table}
+
+\input{best_worst_region_table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{object_acc_by_model_dataset.png}
+    \caption{Object accuracy by model, dataset, and evaluation setting.}
+    \label{fig:object-acc-by-model-dataset}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{region_bias_gap_by_model_dataset.png}
+    \caption{Regional bias gap by model, dataset, and evaluation setting.}
+    \label{fig:region-bias-gap-by-model-dataset}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{pretrained_vs_finetuned_object_acc.png}
+    \caption{Pretrained versus finetuned object accuracy.}
+    \label{fig:pretrained-vs-finetuned-object-acc}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{pretrained_vs_finetuned_region_bias_gap.png}
+    \caption{Pretrained versus finetuned regional bias gap.}
+    \label{fig:pretrained-vs-finetuned-region-bias-gap}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{object_acc_vs_region_bias_gap.png}
+    \caption{Object accuracy versus regional bias gap.}
+    \label{fig:object-acc-vs-region-bias-gap}
+\end{figure}
+
+\subsection{Object Accuracy}
+
+The clearest result is that finetuned evaluation has much higher object accuracy than pretrained ImageNet evaluation for every dataset-model pair in the derived table. On Dollar Street, the object-accuracy delta from pretrained to finetuned ranges from 0.5662 for ResNet to 0.7507 for ConvNeXt, as shown in Table~\ref{tab:pretrained-vs-finetuned-comparison-table}. On GeoDE, the corresponding delta ranges from 0.8803 for ResNet to 0.9451 for DeiT. This suggests that finetuning is strongly associated with improved object accuracy in the available runs. However, this cannot establish causality because the paper only observes completed evaluations and does not manipulate training conditions.
+
+Within the finetuned setting, GeoDE has higher object accuracy than Dollar Street for all nine models. The highest finetuned GeoDE accuracy is 0.9661 for ConvNeXt, followed by 0.9628 for DeiT and 0.9625 for Swin. The lowest finetuned GeoDE accuracy is 0.9086 for ResNet. On Dollar Street, the highest finetuned accuracy is also ConvNeXt at 0.7667, followed by SigLIP at 0.7621 and Swin at 0.7609. The lowest finetuned Dollar Street accuracy is ResNet at 0.5887.
+
+The pretrained ImageNet setting has low object accuracy across both datasets. On Dollar Street, pretrained object accuracy ranges from 0.0107 for DINO to 0.0288 for MaxViT. On GeoDE, pretrained object accuracy ranges from 0.0177 for DeiT to 0.0451 for CLIP. These low values mean that regional gaps in the pretrained setting should be interpreted carefully. A small gap can reflect uniformly weak performance, not necessarily stable regional robustness.
+
+\subsection{Best and Worst Regions}
+
+The best-region and worst-region patterns differ sharply by dataset. In the finetuned Dollar Street rows, every model has \texttt{eu} as the best region and \texttt{af} as the worst region. The best-region accuracy ranges from 0.6356 for ResNet to 0.8061 for ConvNeXt, while the worst-region accuracy ranges from 0.5136 for ResNet to 0.7214 for ConvNeXt. This pattern suggests a consistent regional ordering in the available finetuned Dollar Street results, but the draft cannot explain the mechanism without additional evidence about dataset composition, object categories, and region distributions.
+
+In the finetuned GeoDE rows, most models have WestAsia as the best region and SouthEastAsia as the worst region. The exception in the current table is ResNet, for which Europe is the best region and SouthEastAsia is the worst region. The best-region accuracy in finetuned GeoDE ranges from 0.9238 for ResNet to 0.9788 for ConvNeXt. The worst-region accuracy ranges from 0.8972 for ResNet to 0.9559 for ConvNeXt. This suggests that finetuned GeoDE performance is high across regions, even though a measurable regional gap remains.
+
+The pretrained rows show more varied best and worst regions. Because pretrained object accuracy is very low, these regional rankings should be treated as unstable descriptive outputs rather than strong evidence of regional robustness. TODO: evidence needed to assess whether per-region sample sizes make the pretrained best/worst rankings reliable.
+
+\subsection{Regional Bias Gap}
+
+The regional bias gap is lowest in several pretrained rows, but those rows also have very low object accuracy. The smallest gap in the entire normalized table is 0.0039 for pretrained DeiT on GeoDE, where object accuracy is 0.0177. Other low-gap pretrained rows include pretrained SigLIP on Dollar Street with gap 0.0051 and object accuracy 0.0165, pretrained DeiT on Dollar Street with gap 0.0057 and object accuracy 0.0190, and pretrained CLIP on Dollar Street with gap 0.0057 and object accuracy 0.0146. These results indicate why object accuracy and regional gap should be read together.
+
+Among finetuned runs, GeoDE has lower regional gaps than Dollar Street. The lowest finetuned GeoDE gap is 0.0187 for MAE, followed by MaxViT at 0.0192 and DeiT at 0.0200. The highest finetuned GeoDE gap is 0.0306 for CLIP. On Dollar Street, the lowest finetuned gap is 0.0688 for MAE, followed by Swin at 0.0725 and SigLIP at 0.0743. The highest finetuned Dollar Street gap is 0.1220 for ResNet, followed by MaxViT at 0.1103 and CLIP at 0.1007.
+
+The dataset-level contrast is visible in Table~\ref{tab:dataset-level-summary-table} and Figure~\ref{fig:region-bias-gap-by-model-dataset}. The mean finetuned regional gap is 0.0889 on Dollar Street and 0.0234 on GeoDE. This may indicate that, in the available evaluations, Dollar Street exposes larger regional disparities after finetuning than GeoDE. TODO: evidence needed to connect this pattern to dataset design, class distribution, region definitions, or image collection process.
+
+\subsection{Pretrained versus Finetuned Comparison}
+
+Finetuning is associated with higher object accuracy for every model on both datasets. It is also associated with a larger regional bias gap for every model on both datasets in the derived comparison table. On Dollar Street, the gap increase ranges from 0.0614 for MAE to 0.1156 for ResNet. On GeoDE, the gap increase ranges from 0.0007 for MAE to 0.0165 for SigLIP. The comparison is shown in Table~\ref{tab:pretrained-vs-finetuned-comparison-table} and Figures~\ref{fig:pretrained-vs-finetuned-object-acc} and~\ref{fig:pretrained-vs-finetuned-region-bias-gap}.
+
+This pattern should not be interpreted as evidence that finetuning causes bias. A more cautious interpretation is that, in these completed evaluations, the setting with much higher object accuracy also reveals or produces larger differences between best-region and worst-region accuracy. The scatter plot in Figure~\ref{fig:object-acc-vs-region-bias-gap} is useful for this point: higher object accuracy is not automatically associated with lower regional gap. In fact, several finetuned Dollar Street models have relatively high object accuracy and relatively high regional gap at the same time.
+
+\subsection{GeoDE versus Dollar Street}
+
+GeoDE and Dollar Street show different patterns. GeoDE finetuned runs have higher object accuracy and lower regional bias gaps than Dollar Street finetuned runs. Dollar Street finetuned runs have lower object accuracy and larger gaps, and the best/worst region ordering is consistent across all nine models. This may indicate that Dollar Street is a more challenging setting for the evaluated finetuned models, at least under the metrics used here. However, without verified dataset statistics, region sample sizes, and object-category distributions, the draft should not claim why this difference occurs.
+

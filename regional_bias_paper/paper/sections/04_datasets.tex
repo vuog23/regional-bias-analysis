@@ -1,0 +1,26 @@
+% Draft status: V0
+% Evidence status: checked where possible; TODOs mark missing evidence.
+\section{Datasets}
+
+\subsection{GeoDE}
+
+GeoDE is used as one of the two regional evaluation datasets. The dataset is cited as a geographically diverse evaluation dataset for object recognition \citep{ramaswamy2023geode}. In the current derived results, GeoDE regions appear with names such as Africa, Americas, EastAsia, Europe, SouthEastAsia, and WestAsia. The paper uses the region labels as they appear in the external result JSON files and the normalized metric table.
+
+The GeoDE results in this draft show high finetuned object accuracy and comparatively small finetuned regional gaps. The dataset-level summary reports mean finetuned object accuracy of 0.9508 and mean finetuned regional bias gap of 0.0234. These numbers are empirical results from the derived tables, not general properties of the dataset.
+
+TODO: evidence needed for local GeoDE split sizes, local class count, image count by region, and any preprocessing differences from the official dataset. TODO: evidence needed for whether all models saw exactly the same local train, validation, and test splits.
+
+\subsection{Dollar Street}
+
+Dollar Street is used as the second regional evaluation dataset. It provides household-object imagery intended to capture geographic and socioeconomic diversity \citep{rojas2022dollarstreet}. Prior work using Dollar Street suggests that object-recognition systems may perform unevenly across countries and income levels \citep{devries2019object}. This makes Dollar Street directly relevant for studying regional performance gaps.
+
+In the current derived results, Dollar Street regions appear with abbreviated labels such as \texttt{af}, \texttt{am}, \texttt{as}, and \texttt{eu}. The paper keeps these labels as reported in the result files. The dataset-level summary reports mean finetuned object accuracy of 0.7211 and mean finetuned regional bias gap of 0.0889. Again, these are results from the evaluated runs, not claims about all possible Dollar Street evaluations.
+
+TODO: evidence needed for the exact meaning of each abbreviated Dollar Street region label in the local split. TODO: evidence needed for local Dollar Street split sizes, class count, image count by region, and object-category distribution.
+
+\subsection{Comparison Role in This Paper}
+
+The two datasets play complementary roles. GeoDE is directly framed around geographically diverse object recognition, while Dollar Street is framed around geographic and socioeconomic visual diversity. The results suggest that the same models can show different accuracy-gap behavior across the two datasets. This supports the paper's decision to compare both rather than treating one dataset as sufficient evidence for regional robustness.
+
+The draft avoids dataset-statistics claims until the local data audit is complete. In the final paper, this section should include a verified table with dataset split sizes, region labels, object classes, and any filtering or preprocessing choices. TODO: create and cite a local dataset-audit table.
+

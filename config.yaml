@@ -4,14 +4,9 @@ project:
   seed: 42
 
 paths:
-  # Put your dataset on Vast.ai here.
-  # Expected structure:
-  # data_root/train/<region>/<class>/<image>
-  # data_root/val/<region>/<class>/<image>
-  # data_root/test/<region>/<class>/<image>
-  data_root: D:/Project/DAP_paper/datasets/processed/GeoDE_split
+  # D:\Project\DAP_paper\datasets\processed\DollarStreet
+  data_root: D:/Project/DAP_paper/datasets/processed/GeoDE
 
-  # Leave these as null if you use data_root + train/val/test folders.
   train_dir: null
   val_dir: null
   test_dir: null
@@ -20,19 +15,16 @@ paths:
   val_split: val
   test_split: test
 
-  output_dir: D:/Project/DAP_paper/outputs/finetune/convnextv2_geode
+  output_dir: D:/Project/DAP_paper/results/geode/convnext
 
 model:
-  # Available keys:
-  # convnextv2_base, swinv2_base, deit3_base, dinov2_vitb14, resnet50_base224, clip_vitb16_224
+  # swinv2_base, deit3_base, dinov2_vitb14, resnet50_base,
+  # clip_vitb16, mae_vitb16, siglip_vitb16, maxvit_base
   key: convnextv2_base
-
-  # Set name directly if you want another timm model.
-  # Example: resnet50.a1_in1k
   name: null
 
   pretrained: true
-  num_classes: null   # null = infer automatically from train folder
+  num_classes: null
   drop_path_rate: 0.1
   data_parallel: false
 
@@ -46,25 +38,23 @@ transforms:
   normalize_std: [0.229, 0.224, 0.225]
 
 training:
-  epochs: 20
+  epochs: 10
   batch_size: 32
   num_workers: 4
 
-  optimizer: adam     # adam or adamw
+  optimizer: adam
   lr: 0.00003
   weight_decay: 0.0
   label_smoothing: 0.1
 
-  scheduler: cosine   # cosine or none
-  t_max: null         # null = same as epochs
+  scheduler: cosine
+  t_max: null
   eta_min: 0.000001
 
   amp: true
-  device: auto        # auto, cuda, cuda:0, cpu
+  device: auto
   save_last: true
   test_after_train: true
 
-  # Resume examples:
-  # resume: /workspace/my_training_project/outputs/convnextv2_geode/last_model.pth
   resume: null
   test_only: false

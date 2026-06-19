@@ -1,0 +1,16 @@
+% Draft status: V0
+% Evidence status: checked where possible; TODOs mark missing evidence.
+\section{Introduction}
+
+Object-recognition models are often compared with aggregate accuracy, but aggregate accuracy can hide uneven performance across regions. This is a concern for geographically diverse visual data because the same object category can appear in different environments, styles, materials, backgrounds, and socioeconomic contexts. Prior work on Dollar Street suggests that object-recognition performance may vary across countries and income levels \citep{devries2019object}. This motivates evaluating models not only by overall object accuracy but also by their best- and worst-region performance.
+
+This paper studies regional bias in computer vision models on GeoDE and Dollar Street. GeoDE is a geographically diverse evaluation dataset for object recognition \citep{ramaswamy2023geode}. Dollar Street provides household-object imagery intended to represent geographic and socioeconomic visual diversity \citep{rojas2022dollarstreet}. These datasets make it possible to ask whether strong object recognition performance is accompanied by stable performance across regions.
+
+The main research question is: how do pretrained and finetuned vision models differ in regional bias across GeoDE and Dollar Street? The paper compares nine model names: CLIP, ConvNeXt, DeiT, DINO, MAE, MaxViT, ResNet, SigLIP, and Swin. It evaluates two settings: pretrained ImageNet evaluation and finetuned evaluation. The analysis uses completed result files and derived tables; it does not train new models inside the paper workspace.
+
+The central metrics are object accuracy, best-region accuracy, worst-region accuracy, and regional bias gap. The regional bias gap is the difference between best-region and worst-region accuracy. This metric is simple, but it helps prevent a purely aggregate reading of model performance. A model can have high object accuracy and still show a large regional gap. A model can also have a small regional gap because it performs poorly everywhere. For that reason, this paper interprets object accuracy and regional gap together.
+
+The first draft results suggest three broad patterns. First, finetuning is associated with much higher object accuracy for every model-dataset pair in the derived table. Second, finetuning is also associated with larger regional bias gaps in every model-dataset pair. Third, the dataset matters: finetuned GeoDE results have higher mean object accuracy and lower mean regional gap than finetuned Dollar Street results. These are descriptive findings and should not be read as causal claims.
+
+The contribution of this paper is a reproducible first analysis of regional object-recognition performance across two datasets, nine models, and two evaluation settings. It also provides a workflow for separating empirical claims from literature claims. Empirical claims come from normalized result tables and figures; literature claims come from verified citation entries. TODO: sharpen contributions after the related work and dataset audit are expanded.
+

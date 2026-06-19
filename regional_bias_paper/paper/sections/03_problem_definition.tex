@@ -1,0 +1,22 @@
+% Draft status: V0
+% Evidence status: checked where possible; TODOs mark missing evidence.
+\section{Problem Definition}
+
+The paper studies regional variation in object-recognition performance. Let \(d\) denote a dataset, \(m\) denote a model, \(s\) denote an evaluation setting, and \(r\) denote a region. The two datasets are Dollar Street and GeoDE, and the two settings are pretrained ImageNet evaluation and finetuned evaluation. The analysis is based on completed result files rather than new interventions.
+
+For each dataset-model-setting combination, the primary aggregate metric is object accuracy, recorded as \texttt{object\_acc}. This is the fraction of test images for which the predicted object label matches the ground-truth object label. The regional version of this metric is recorded in the source results as per-region object accuracy and summarized in the normalized table through \texttt{best\_region}, \texttt{worst\_region}, \texttt{best\_region\_acc}, and \texttt{worst\_region\_acc}.
+
+The best region is the region with the highest regional object accuracy for a given dataset-model-setting row. The worst region is the region with the lowest regional object accuracy for that same row. The regional bias gap is defined as:
+\[
+    \text{region\_bias\_gap}_{d,m,s}
+    =
+    \text{best\_region\_acc}_{d,m,s}
+    -
+    \text{worst\_region\_acc}_{d,m,s}.
+\]
+A larger value indicates a larger difference between the highest-performing and lowest-performing regions. A smaller value indicates more similar best- and worst-region performance, but it does not by itself imply that the model is useful or robust. For example, a model with uniformly low accuracy can have a small regional gap.
+
+This definition follows the general motivation of worst-group evaluation: aggregate accuracy can hide weak performance for particular groups \citep{sagawa2020groupdro}. The paper uses the term ``regional bias gap'' descriptively. It does not claim that the gap identifies discrimination, causal mechanisms, or deployment harm. Those questions would require additional evidence about dataset construction, region definitions, user populations, and model use cases. TODO: citation needed for a region-specific fairness metric if the final paper uses stronger fairness language.
+
+The main research question is: how do pretrained and finetuned vision models differ in regional bias across GeoDE and Dollar Street? The secondary questions ask which models have the highest object accuracy, which have the lowest regional gap, whether finetuning is associated with higher object accuracy, whether it is associated with lower or higher regional gap, whether model families differ descriptively, and whether high object accuracy is always accompanied by lower regional bias.
+

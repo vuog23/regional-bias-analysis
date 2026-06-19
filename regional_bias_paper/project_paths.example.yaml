@@ -1,0 +1,5 @@
+results_root: "D:/Project/DAP_paper/results"
+global_config: "D:/Project/DAP_paper/config.yaml"
+training_script: "D:/Project/DAP_paper/scripts/finetune.py"
+output_dir: "./derived"
+

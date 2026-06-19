@@ -1,0 +1,16 @@
+% Draft status: V0
+% Evidence status: checked where possible; TODOs mark missing evidence.
+\section{Limitations}
+
+This draft has several important limitations. First, the analysis is based only on completed pretrained ImageNet and finetuned result files. It does not run new training jobs, new ablations, or controlled interventions. Therefore, the paper can describe associations between evaluation setting, object accuracy, and regional bias gap, but it cannot establish causality.
+
+Second, the regional bias gap is a simple best-minus-worst metric. It is useful because it foregrounds worst-region performance, but it does not capture all possible forms of regional fairness or robustness. It ignores uncertainty, sample size, per-class imbalance, calibration, and the distribution of errors within each region. A small gap can also be misleading when object accuracy is uniformly low.
+
+Third, the dataset description is incomplete in this V0 draft. The paper currently avoids local dataset-statistics claims because a verified local audit table has not yet been created. The final paper should document local split sizes, region counts, class counts, and any filtering or preprocessing steps. TODO: evidence needed for local dataset statistics.
+
+Fourth, the model-family discussion is descriptive and coarse. CNN, transformer, self-supervised, and vision-language groupings contain models that differ in architecture, pretraining data, objective, classifier head, and finetuning details. The current evidence does not support claims that a family membership causes a particular regional bias pattern.
+
+Fifth, the pretrained ImageNet evaluation setting needs more methodological detail. The derived result files are sufficient for reporting object accuracy and regional gaps, but the final paper should more fully document classifier-head behavior, class mapping, and any model-specific evaluation differences. TODO: evidence needed for pretrained classifier-head setup and class-mapping details.
+
+Finally, the literature review is seeded but not complete. It includes core dataset, model, and robustness papers, but it should be expanded with a transparent deep-research pass before the final paper. TODO: evidence needed for additional regional fairness and geographic vision bias literature.
+
