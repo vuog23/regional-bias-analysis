@@ -1,20 +1,3 @@
-% Draft status: V0
-% Evidence status: checked where possible; TODOs mark missing evidence.
-\section{Methodology}
-
-This paper uses an evidence-driven aggregation workflow rather than a new training procedure. The empirical unit of analysis is a dataset-model-setting result. Each row corresponds to one dataset, one model, and one evaluation setting. The two datasets are Dollar Street and GeoDE, and the nine model names used in the derived table are \texttt{clip}, \texttt{convnext}, \texttt{deit}, \texttt{dino}, \texttt{mae}, \texttt{maxvit}, \texttt{resnet}, \texttt{siglip}, and \texttt{swin}. The two evaluation settings are recorded with the variable \texttt{finetune}: \texttt{yes} for finetuned evaluation and \texttt{no} for pretrained ImageNet evaluation.
-
-The main source table is \texttt{derived/processed/all\_metrics.csv}. It is produced by reading finetuned results from the external path pattern \texttt{results/\{dataset\}/\{model\}/test\_results.json} and pretrained ImageNet results from \texttt{results/imagenet/\{dataset\}\_\{model\}.json}. The aggregation script writes both CSV and JSON outputs inside the paper workspace and does not modify the external result files. This separation is important because the paper workspace is intended for reproducible analysis and writing, not model training.
-
-The normalized table contains the following columns: \texttt{dataset}, \texttt{model}, \texttt{loss}, \texttt{object\_acc}, \texttt{best\_region}, \texttt{worst\_region}, \texttt{best\_region\_acc}, \texttt{worst\_region\_acc}, \texttt{region\_bias\_gap}, and \texttt{finetune}. When \texttt{region\_bias\_gap} is present in a source JSON file, the aggregation keeps that value. When it is absent but both \texttt{best\_region\_acc} and \texttt{worst\_region\_acc} are available, the gap is computed as:
-\[
-    \texttt{region\_bias\_gap} =
-    \texttt{best\_region\_acc} - \texttt{worst\_region\_acc}.
-\]
-The validation script checks that this relationship holds in the normalized table.
-
-The finetuning configuration files indicate a common evaluation pipeline with image size 224, batch size 32, Adam optimization, cosine scheduling, label smoothing of 0.1, automatic mixed precision enabled, and test-after-train enabled. The external \texttt{used\_config.yaml} files checked for this draft report 10 epochs for the inspected dataset-model runs. The training script computes object accuracy as the fraction of correct object predictions, collects per-region correct and total counts when region labels are available, and then reports the best and worst regions by regional object accuracy. TODO: evidence needed to confirm that every model run used exactly the same hyperparameters beyond the inspected \texttt{used\_config.yaml} files.
-
-The pretrained ImageNet setting is treated as the evaluation setting with \texttt{finetune=no} in the derived table. The draft does not claim that this setting is a pure zero-shot benchmark for all architectures, because classifier-head behavior and class-mapping details still need to be documented from an allowed audit artifact. TODO: evidence needed to fully describe the pretrained classifier-head setup for each model.
-
-All analysis is descriptive. The paper compares object accuracy, worst-region accuracy, best-region accuracy, and regional bias gap across models, datasets, and settings. These comparisons can suggest associations, such as whether finetuning is associated with higher object accuracy or a larger regional gap, but they cannot establish causality. The cautious framing is consistent with the broader domain generalization and distribution-shift literature, which emphasizes careful evaluation protocols and limited transfer from one benchmark setting to another \citep{gulrajani2021domainbed,koh2021wilds}.
+% Draft status: superseded
+% This file is intentionally not included by main.tex.
+% Its contents were merged into 03_problem_definition.tex and 07_experiments.tex.

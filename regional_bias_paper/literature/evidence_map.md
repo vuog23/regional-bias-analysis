@@ -1,22 +1,21 @@
 # Evidence Map
 
-This map tracks what each section needs before prose is finalized.
-
-| paper section | claim needed | supporting source | citation key | evidence strength | status |
-|---|---|---|---|---|---|
-| Introduction | Regional evaluation matters for object recognition because prior work found uneven performance across geographic and socioeconomic contexts. | Does Object Recognition Work for Everyone? | devries2019object | strong | seeded |
-| Introduction | This paper compares pretrained and finetuned settings across GeoDE and Dollar Street. | External result JSON files and derived tables | derived results | strong after validation | TODO: evidence needed |
-| Related Work | GeoDE is a geographically diverse object-recognition dataset. | GeoDE paper | ramaswamy2023geode | strong | seeded |
-| Related Work | Dollar Street captures geographic and socioeconomic diversity in household-object images. | Dollar Street paper | rojas2022dollarstreet | strong | seeded |
-| Related Work | Dataset bias and domain shift affect visual recognition evaluation. | Dataset bias and shift literature | torralba2011datasetbias; taori2020naturalshifts; koh2021wilds | medium | seeded |
-| Problem Definition | Worst-region accuracy and regional bias gap complement aggregate object accuracy. | Group/worst-case evaluation literature plus derived metric definition | sagawa2020groupdro | medium | seeded |
-| Datasets | Exact local class counts and splits for GeoDE and Dollar Street. | External configs and local result metadata | local files | strong after audit | TODO: evidence needed |
-| Models | Exact model identifiers used locally. | `used_config.yaml` and training script/config metadata | local files | strong after audit | TODO: evidence needed |
-| Methodology | Aggregation produces the required normalized columns. | `scripts/aggregate_results.py` and `derived/processed/all_metrics.csv` | derived results | strong after validation | TODO: evidence needed |
-| Results | Highest object accuracy by model and dataset. | `derived/tables/overall_metrics_table.csv` | derived results | strong after validation | TODO: evidence needed |
-| Results | Lowest regional bias gap by model and dataset. | `derived/tables/region_bias_gap_ranking_table.csv` | derived results | strong after validation | TODO: evidence needed |
-| Results | Finetuned versus pretrained object-accuracy deltas. | `derived/tables/pretrained_vs_finetuned_comparison_table.csv` | derived results | strong after validation | TODO: evidence needed |
-| Results | Finetuned versus pretrained regional-gap deltas. | `derived/tables/pretrained_vs_finetuned_comparison_table.csv` | derived results | strong after validation | TODO: evidence needed |
-| Discussion | Some model families may appear more regionally stable. | Derived model-family summaries plus model papers | derived results; model citations | medium after validation | TODO: evidence needed |
-| Limitations | Analysis is limited to available pretrained and finetuned result files. | Workspace scope and external source documentation | local documentation | strong | seeded |
-
+| paper section | claim needed | supporting paper | supporting result table or figure if applicable | citation key | strength | TODO if evidence is missing |
+|---|---|---|---|---|---|---|
+| Introduction | Regional object-recognition evaluation matters. | Does Object Recognition Work for Everyone?; No Classification without Representation | none | devries2019object; shankar2017geodiversity | strong |  |
+| Introduction | GeoDE and Dollar Street are appropriate datasets. | GeoDE; Dollar Street dataset papers | none | ramaswamy2023geode; rojas2022dollarstreet | strong |  |
+| Related Work | Dataset bias and benchmark representation affect evaluation. | Dataset bias; ImageNet audit papers | none | torralba2011datasetbias; yang2020fairerimagenet; luccioni2022bugs | strong |  |
+| Related Work | Distribution shift motivates evaluation beyond aggregate accuracy. | WILDS; natural shifts; DomainBed | none | koh2021wilds; taori2020naturalshifts; gulrajani2021domainbed | strong |  |
+| Related Work | Worst-group and hidden-strata evaluation motivate worst-region metrics. | Group DRO; hidden stratification | none | sagawa2020groupdro; sohoni2020hiddenstratification | strong |  |
+| Related Work | Context/design/shortcut mechanisms may matter for regional differences. | GeoNet; shortcut and texture-bias papers | none | kalluri2023geonet; geirhos2018texturebias; geirhos2020shortcut | medium | Need local evidence before turning this into an explanation. |
+| Methodology | Metrics are normalized and validated. | none | derived/processed/all_metrics.csv; validate_results.py output | derived results | strong |  |
+| Results | Finetuning increases object accuracy. | none | derived/tables/pretrained_vs_finetuned_comparison_table.csv; figure pretrained_vs_finetuned_object_acc.png | derived results | strong |  |
+| Results | Finetuning increases regional gap. | none | derived/tables/pretrained_vs_finetuned_comparison_table.csv; figure pretrained_vs_finetuned_region_bias_gap.png | derived results | strong |  |
+| Results | ConvNeXtV2 is highest-accuracy finetuned model on both datasets. | none | derived/processed/all_metrics.csv | derived results | strong |  |
+| Results | MAE is lowest-gap finetuned model on both datasets. | none | derived/processed/all_metrics.csv | derived results | strong |  |
+| Results | Dollar Street has larger finetuned regional gap than GeoDE. | none | derived/tables/dataset_level_summary_table.csv | derived results | strong |  |
+| Discussion | Accuracy and regional balance are not the same property. | Worst-group literature | accuracy-bias and Pareto figures | sagawa2020groupdro; sohoni2020hiddenstratification | strong |  |
+| Discussion | Finetuning may reveal regional gaps because accuracy becomes nontrivial. | none | delta trade-off figure | derived results | medium | TODO: citation needed for metric-floor/compression interpretation. |
+| Discussion | Model-family differences are descriptive only. | model papers for identity; no causal evidence | family comparison table/figure | model citations | medium | TODO: add controlled family analysis before stronger claims. |
+| Limitations | Local dataset statistics are missing. | dataset papers; local audit needed | none | ramaswamy2023geode; rojas2022dollarstreet | medium | TODO: create local split/region/class table. |
+| Limitations | Region gap does not fully capture fairness. | fairness and worst-group papers | none | gustafson2023facet; sagawa2020groupdro | medium | TODO: add confidence intervals or uncertainty estimates. |

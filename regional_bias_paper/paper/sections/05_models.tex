@@ -2,15 +2,24 @@
 % Evidence status: checked where possible; TODOs mark missing evidence.
 \section{Models}
 
-The paper evaluates nine model names in the derived result table: CLIP, ConvNeXt, DeiT, DINO, MAE, MaxViT, ResNet, SigLIP, and Swin. These models are grouped into four rough families for discussion: CNNs, transformers, self-supervised models, and vision-language models. The grouping is descriptive and should not be treated as causal evidence.
+The paper evaluates nine models grouped into four representation paradigms. The grouping is analytical rather than causal: it helps compare architecture families and pretraining signals, but the results alone do not prove that a paradigm causes a particular regional-disparity pattern.
 
-The CNN group contains ResNet and ConvNeXt. ResNet introduced residual learning for deep convolutional image-recognition networks \citep{he2016resnet}. ConvNeXt revisited convolutional architecture design in the context of modern vision systems \citep{liu2022convnext}. In the current results, ConvNeXt is the highest-accuracy finetuned model on both datasets, while ResNet has the lowest finetuned object accuracy on both datasets. This shows that the CNN grouping contains models with very different performance in the present experiments.
+\subsection{Convolutional Vision Paradigm}
 
-The transformer group contains DeiT, Swin, and MaxViT. DeiT is associated with data-efficient image transformer training and distillation \citep{touvron2021deit}. Swin uses hierarchical shifted-window attention \citep{liu2021swin}. MaxViT uses a multi-axis attention design \citep{tu2022maxvit}. In the derived results, the transformer models are generally strong in finetuned object accuracy, but their regional gaps vary by dataset and model.
+The Convolutional Vision Paradigm contains ResNet50 and ConvNeXtV2. ResNet50 is the classical residual CNN baseline, representing the long-standing convolutional approach to image recognition \citep{he2016resnet}. ConvNeXtV2 is a modernized ConvNet that combines convolutional architecture design with representation-learning advances, including masked-autoencoder-inspired training ideas \citep{woo2023convnextv2}. This group tests whether convolutional locality and hierarchical feature extraction remain competitive under geographic shift.
 
-The self-supervised group contains DINO and MAE. DINOv2 is cited here as a self-supervised visual representation model \citep{oquab2024dinov2}, and MAE is cited as a masked image modeling approach \citep{he2022mae}. In this paper's results, MAE is notable because it has the lowest finetuned regional gap on both datasets, although it does not have the highest object accuracy.
+\subsection{Transformer Vision Paradigm}
 
-The vision-language group contains CLIP and SigLIP. CLIP uses natural-language supervision over image-text pairs \citep{radford2021clip}, and SigLIP modifies language-image pretraining with a sigmoid loss \citep{zhai2023siglip}. Prior work suggests that CLIP-like robustness can be associated with the distribution of pretraining data \citep{fang2022cliprobustness}. The current draft uses that literature as context only; it does not claim to identify the pretraining causes of CLIP or SigLIP regional behavior.
+The Transformer Vision Paradigm contains DeiT3, SwinV2, and MaxViT. DeiT3 is used as a strong supervised Vision Transformer recipe \citep{touvron2022deit3}. SwinV2 is a hierarchical shifted-window transformer designed for scaling capacity and resolution \citep{liu2022swinv2}. MaxViT is a hybrid convolution-attention architecture, but this paper places it under the Transformer Vision Paradigm because its central contribution is multi-axis attention \citep{tu2022maxvit}. This group tests whether attention-based architectures reduce regional sensitivity or primarily improve average recognition.
 
-TODO: verify the exact local model identifiers for every model from all \texttt{used\_config.yaml} files. One inspected local configuration entry for Dollar Street Swin should be rechecked against the intended model naming before the final paper. TODO: add a model-details table listing architecture key, pretrained source, image size, and evaluation setting.
+\subsection{Self-supervised Foundation Paradigm}
 
+The Self-supervised Foundation Paradigm contains DINOv2 and MAE. DINOv2 learns visual features through large-scale self-supervised representation learning \citep{oquab2024dinov2}. MAE learns by reconstructing masked image patches \citep{he2022mae}. These models are useful for the paper because they test whether label-free representation learning transfers more evenly across geographic regions than ordinary supervised recognition pipelines.
+
+\subsection{Vision-Language Foundation Paradigm}
+
+The Vision-Language Foundation Paradigm contains CLIP and SigLIP. CLIP aligns images and text through contrastive language-image pretraining \citep{radford2021clip}. SigLIP uses a sigmoid loss for language-image pretraining \citep{zhai2023siglip}. These models test whether semantic supervision from image-text data improves regional consistency, or whether large-scale language-image pretraining still leaves uneven regional behavior.
+
+\input{revision_model_taxonomy_table}
+
+The taxonomy table describes the intended comparison. The empirical claims in later sections come only from the derived result tables, not from expectations about model families. TODO: reconcile the stored Dollar Street SwinV2 fine-tuning configuration before final submission; the result row is labeled with the paper's intended SwinV2 taxonomy, but one local \texttt{used\_config.yaml} entry requires audit.

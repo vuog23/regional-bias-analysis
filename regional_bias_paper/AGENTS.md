@@ -21,3 +21,13 @@
 - Do not move, copy, delete, overwrite, or rename external result, config, training, dataset, or checkpoint files.
 - Only read external JSON, YAML, and Python files when needed for reproducibility documentation.
 
+
+Literature and insight rule:
+
+The paper should not only cite model papers. It must also cite strictly relevant work on geographic bias, dataset bias, domain shift, worst-group robustness, fairness metrics, visual dataset representation, GeoDE, Dollar Street, and evaluation beyond aggregate accuracy.
+
+Citations should be broad but not inflated. Use many citations only when they directly support the claims being made.
+
+For results, the agent should search for non-obvious insights using object accuracy, worst-region accuracy, best-region accuracy, region bias gap, pretrained-vs-finetuned changes, dataset differences, and model-family differences.
+
+Creative plots are encouraged, but every insight must be tied to actual metrics and must include a caveat.

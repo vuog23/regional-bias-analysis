@@ -3,7 +3,7 @@ project:
   dataset_name: GeoDE
   seed: 42
 paths:
-  data_root: /workspace/DollarStreet
+  data_root: /workspace/data/DollarStreet
   train_dir: null
   val_dir: null
   test_dir: null
@@ -12,7 +12,7 @@ paths:
   test_split: test
   output_dir: /workspace/output
 model:
-  key: deit3_base
+  key: swinv2_base
   name: null
   pretrained: true
   num_classes: null

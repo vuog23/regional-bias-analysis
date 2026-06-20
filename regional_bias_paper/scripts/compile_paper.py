@@ -49,6 +49,45 @@ def run_compiler(command: list[str], paper_dir: Path) -> subprocess.CompletedPro
     )
 
 
+def run_direct_pdf_build(paper_dir: Path) -> subprocess.CompletedProcess[str]:
+    """Fallback for local MiKTeX installs where latexmk exists but Perl does not."""
+    pdflatex = shutil.which("pdflatex")
+    bibtex = shutil.which("bibtex")
+    if pdflatex is None:
+        return subprocess.CompletedProcess(["pdflatex"], 1, "pdflatex was not found on PATH.\n")
+
+    commands: list[list[str]] = [
+        [pdflatex, "-interaction=nonstopmode", "-halt-on-error", "main.tex"],
+    ]
+    if bibtex is not None:
+        commands.append([bibtex, "main"])
+    commands.extend(
+        [
+            [pdflatex, "-interaction=nonstopmode", "-halt-on-error", "main.tex"],
+            [pdflatex, "-interaction=nonstopmode", "-halt-on-error", "main.tex"],
+        ]
+    )
+
+    combined_output: list[str] = []
+    last_completed: subprocess.CompletedProcess[str] | None = None
+    for command in commands:
+        last_completed = run_compiler(command, paper_dir)
+        if last_completed.stdout:
+            combined_output.append(last_completed.stdout)
+        if last_completed.returncode != 0:
+            return subprocess.CompletedProcess(
+                command,
+                last_completed.returncode,
+                "\n".join(combined_output),
+            )
+
+    return subprocess.CompletedProcess(
+        commands[-1],
+        0,
+        "\n".join(combined_output),
+    )
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -82,11 +121,18 @@ def main() -> int:
         command = [str(local_tectonic), "--keep-logs", "main.tex"]
 
     completed = run_compiler(command, paper_dir)
+    if (
+        completed.returncode != 0
+        and "could not find the script engine 'perl'" in (completed.stdout or "").lower()
+    ):
+        print("latexmk is installed, but MiKTeX cannot run it because Perl is missing.")
+        print("Falling back to direct pdflatex/bibtex compilation.")
+        completed = run_direct_pdf_build(paper_dir)
 
     if completed.returncode != 0:
         print("ERROR: LaTeX compilation failed.")
         if completed.stdout:
-            print("latexmk output:")
+            print("compiler output:")
             print("-" * 72)
             print(completed.stdout.strip())
         print_latex_errors(paper_dir / "main.log")

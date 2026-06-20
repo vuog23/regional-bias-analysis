@@ -17,7 +17,7 @@
 \def\input@path{{sections/}{tables/}}
 \makeatother
 
-\title{Regional Bias in Pretrained and Finetuned Vision Models on GeoDE and Dollar Street}
+\title{Regional Robustness Across Vision Representation Paradigms on GeoDE and Dollar Street}
 \author{TODO: author names}
 \date{\today}
 
@@ -26,7 +26,7 @@
 \maketitle
 
 \begin{abstract}
-TODO: evidence needed. Write the abstract only after results and claims are validated.
+Modern vision models achieve strong benchmark performance, but average accuracy can hide uneven behavior across geographic regions. This paper studies that tension using nine object-recognition models grouped into four representation paradigms: Convolutional Vision, Transformer Vision, Self-supervised Foundation, and Vision-Language Foundation. The evaluation uses GeoDE and Dollar Street, two datasets designed to expose geographically diverse visual contexts. For each model and dataset, the paper compares ImageNet-pretrained evaluation against evaluation after fine-tuning on the dataset training split. The analysis reports overall accuracy, per-region accuracy, worst-region accuracy, best-region accuracy, and a geographic-disparity measure defined as the best-region accuracy minus the worst-region accuracy. In the current results, fine-tuning improves average object accuracy for all 18 dataset-model pairs, but it also increases measured geographic disparity for all 18 pairs. ConvNeXtV2 achieves the highest fine-tuned accuracy on both datasets, while MAE has the lowest fine-tuned disparity on both datasets. These findings suggest that high recognition accuracy and regional robustness are related but distinct evaluation targets. The results are descriptive and do not establish causal mechanisms.
 \end{abstract}
 
 \input{sections/01_introduction}
@@ -34,10 +34,8 @@ TODO: evidence needed. Write the abstract only after results and claims are vali
 \input{sections/03_problem_definition}
 \input{sections/04_datasets}
 \input{sections/05_models}
-\input{sections/06_methodology}
 \input{sections/07_experiments}
 \input{sections/08_results}
-\input{sections/09_analysis_discussion}
 \input{sections/10_limitations}
 \input{sections/11_conclusion}
 

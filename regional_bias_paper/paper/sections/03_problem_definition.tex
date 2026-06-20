@@ -1,22 +1,50 @@
 % Draft status: V0
 % Evidence status: checked where possible; TODOs mark missing evidence.
-\section{Problem Definition}
+\section{Problem Definition and Methodology}
 
-The paper studies regional variation in object-recognition performance. Let \(d\) denote a dataset, \(m\) denote a model, \(s\) denote an evaluation setting, and \(r\) denote a region. The two datasets are Dollar Street and GeoDE, and the two settings are pretrained ImageNet evaluation and finetuned evaluation. The analysis is based on completed result files rather than new interventions.
+Let \(D=\{(x_i,y_i,r_i)\}_{i=1}^{n}\) be an object-recognition dataset, where \(x_i\) is an image, \(y_i\) is the object label, and \(r_i\) is the geographic region associated with the image. Given a model \(f\), this paper evaluates whether object-recognition accuracy is consistent across regions. The unit of analysis is a dataset-model-training-state tuple: one dataset, one model, and either the pretrained or fine-tuned state.
 
-For each dataset-model-setting combination, the primary aggregate metric is object accuracy, recorded as \texttt{object\_acc}. This is the fraction of test images for which the predicted object label matches the ground-truth object label. The regional version of this metric is recorded in the source results as per-region object accuracy and summarized in the normalized table through \texttt{best\_region}, \texttt{worst\_region}, \texttt{best\_region\_acc}, and \texttt{worst\_region\_acc}.
-
-The best region is the region with the highest regional object accuracy for a given dataset-model-setting row. The worst region is the region with the lowest regional object accuracy for that same row. The regional bias gap is defined as:
+Overall object accuracy is defined as
 \[
-    \text{region\_bias\_gap}_{d,m,s}
+    \mathrm{Acc}(f)
     =
-    \text{best\_region\_acc}_{d,m,s}
-    -
-    \text{worst\_region\_acc}_{d,m,s}.
+    \frac{1}{n}\sum_{i=1}^{n}\mathbf{1}\{f(x_i)=y_i\}.
 \]
-A larger value indicates a larger difference between the highest-performing and lowest-performing regions. A smaller value indicates more similar best- and worst-region performance, but it does not by itself imply that the model is useful or robust. For example, a model with uniformly low accuracy can have a small regional gap.
+For a region \(r\), per-region accuracy is
+\[
+    \mathrm{Acc}_{r}(f)
+    =
+    \frac{\sum_{i=1}^{n}\mathbf{1}\{r_i=r\}\mathbf{1}\{f(x_i)=y_i\}}
+    {\sum_{i=1}^{n}\mathbf{1}\{r_i=r\}}.
+\]
+This allows the same model to be evaluated both as an average recognizer and as a region-conditioned recognizer.
 
-This definition follows the general motivation of worst-group evaluation: aggregate accuracy can hide weak performance for particular groups \citep{sagawa2020groupdro}. The paper uses the term ``regional bias gap'' descriptively. It does not claim that the gap identifies discrimination, causal mechanisms, or deployment harm. Those questions would require additional evidence about dataset construction, region definitions, user populations, and model use cases. TODO: citation needed for a region-specific fairness metric if the final paper uses stronger fairness language.
+The paper's geographic-disparity metric is the maximum difference between regional accuracies:
+\[
+    \Delta_{\mathrm{geo}}(f)
+    =
+    \max_{r}\mathrm{Acc}_{r}(f)
+    -
+    \min_{r}\mathrm{Acc}_{r}(f).
+\]
+This metric follows the same intuition as worst-group evaluation: average accuracy can hide the weakest group performance \citep{sagawa2020groupdro}. It also follows the regional-evaluation motivation of prior Dollar Street and GeoDE work \citep{devries2019object,ramaswamy2023geode}. The formula here is this paper's adapted best-minus-worst regional gap; it should not be read as a full fairness metric.
 
-The main research question is: how do pretrained and finetuned vision models differ in regional bias across GeoDE and Dollar Street? The secondary questions ask which models have the highest object accuracy, which have the lowest regional gap, whether finetuning is associated with higher object accuracy, whether it is associated with lower or higher regional gap, whether model families differ descriptively, and whether high object accuracy is always accompanied by lower regional bias.
+The paper compares two training states. The pretrained state evaluates ImageNet-compatible pretrained models before dataset-specific fine-tuning. The fine-tuned state evaluates the same model family after fine-tuning on the training split for each dataset. The fine-tuning change in average accuracy is
+\[
+    \Delta_{\mathrm{FT,Acc}}
+    =
+    \mathrm{Acc}(f_{\mathrm{fine\text{-}tuned}})
+    -
+    \mathrm{Acc}(f_{\mathrm{pretrained}}).
+\]
+The fine-tuning change in geographic disparity is
+\[
+    \Delta_{\mathrm{FT,Disparity}}
+    =
+    \Delta_{\mathrm{geo}}(f_{\mathrm{fine\text{-}tuned}})
+    -
+    \Delta_{\mathrm{geo}}(f_{\mathrm{pretrained}}).
+\]
+A positive \(\Delta_{\mathrm{FT,Acc}}\) means that fine-tuning improves average accuracy. A negative \(\Delta_{\mathrm{FT,Disparity}}\) means that fine-tuning reduces measured regional disparity. A positive \(\Delta_{\mathrm{FT,Disparity}}\) means that fine-tuning increases measured disparity even if average accuracy improves.
 
+The analysis is descriptive. It can show that high average accuracy and low regional disparity do not always coincide. It can also show that fine-tuned and pretrained states differ. It cannot prove why the difference occurs without additional evidence about class balance, region composition, pretraining data, model capacity, and optimization.
