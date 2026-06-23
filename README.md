@@ -1,4 +1,4 @@
-# Uncovering Regional Disparities Across Modern VisualRepresentation Paradigms
+# Uncovering Regional Disparities Across Modern Visual Representation Paradigms
 
 This repository provides a config-driven training entrypoint for fine-tuning timm image classification models on region-aware datasets such as GeoDE and DollarStreet.
 
