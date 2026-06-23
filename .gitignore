@@ -4,3 +4,4 @@ datasets/
 *.pth
 kaggle.json
 paper/
+scripts/
