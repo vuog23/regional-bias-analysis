@@ -1,25 +1,45 @@
+from typing import Dict, Any
 from torchvision import transforms
 
-def train_transform():
-    return transforms.Compose([
-        transforms.RandomResizedCrop(224, scale=(0.7, 1.0)),
-        transforms.RandomHorizontalFlip(),
-        transforms.ColorJitter(0.3, 0.3, 0.3, 0.3),
-        transforms.RandomGrayscale(),
-        transforms.ToTensor(),
-        transforms.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225]
-        ),
-    ])
 
+class Transform:
+    def __init__(self, transform_cfg: Dict[str, Any]):
+        self.transform_cfg = transform_cfg
+        self.image_size = int(transform_cfg["image_size"])
 
-def eval_transform():
-    return transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        transforms.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225]
-        ),
-    ])
+    def train_transform(self):
+        crop_scale = tuple(self.transform_cfg["random_resized_crop_scale"])
+        jitter = self.transform_cfg["color_jitter"]
+
+        return transforms.Compose(
+            [
+                transforms.RandomResizedCrop(
+                    self.image_size,
+                    scale=crop_scale,
+                ),
+                transforms.RandomHorizontalFlip(
+                    p=float(self.transform_cfg["horizontal_flip_p"])
+                ),
+                transforms.ColorJitter(*jitter),
+                transforms.RandomGrayscale(
+                    p=float(self.transform_cfg["random_grayscale_p"])
+                ),
+                transforms.ToTensor(),
+                transforms.Normalize(
+                    mean=self.transform_cfg["normalize_mean"],
+                    std=self.transform_cfg["normalize_std"],
+                ),
+            ]
+        )
+
+    def eval_transform(self):
+        return transforms.Compose(
+            [
+                transforms.Resize((self.image_size, self.image_size)),
+                transforms.ToTensor(),
+                transforms.Normalize(
+                    mean=self.transform_cfg["normalize_mean"],
+                    std=self.transform_cfg["normalize_std"],
+                ),
+            ]
+        )

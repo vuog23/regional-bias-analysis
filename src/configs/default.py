@@ -1,0 +1,55 @@
+from typing import Any, Dict
+
+
+DEFAULT_CONFIG: Dict[str, Any] = {
+    "project": {
+        "name": "geode_finetune",
+        "dataset_name": "GeoDE",
+        "seed": 42,
+    },
+    "paths": {
+        "data_root": "/workspace/my_training_project/data/GeoDE_split",
+        "train_dir": None,
+        "val_dir": None,
+        "test_dir": None,
+        "train_split": "train",
+        "val_split": "val",
+        "test_split": "test",
+        "output_dir": "/workspace/my_training_project/outputs/convnextv2_geode",
+    },
+    "model": {
+        "key": "convnextv2_base",
+        "name": None,
+        "pretrained": True,
+        "num_classes": None,
+        "drop_path_rate": 0.1,
+        "data_parallel": False,
+    },
+    "transforms": {
+        "image_size": 224,
+        "random_resized_crop_scale": [0.7, 1.0],
+        "horizontal_flip_p": 0.5,
+        "color_jitter": [0.3, 0.3, 0.3, 0.3],
+        "random_grayscale_p": 0.1,
+        "normalize_mean": [0.485, 0.456, 0.406],
+        "normalize_std": [0.229, 0.224, 0.225],
+    },
+    "training": {
+        "epochs": 20,
+        "batch_size": 32,
+        "num_workers": 2,
+        "optimizer": "adam",
+        "lr": 0.00003,
+        "weight_decay": 0.0,
+        "label_smoothing": 0.1,
+        "scheduler": "cosine",
+        "t_max": None,
+        "eta_min": 0.000001,
+        "amp": True,
+        "device": "auto",
+        "save_last": True,
+        "test_after_train": True,
+        "resume": None,
+        "test_only": False,
+    },
+}
