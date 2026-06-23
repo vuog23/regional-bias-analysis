@@ -1,4 +1,4 @@
-# DAP Paper Fine-Tuning
+# Uncovering Regional Disparities Across Modern VisualRepresentation Paradigms
 
 This repository provides a config-driven training entrypoint for fine-tuning timm image classification models on region-aware datasets such as GeoDE and DollarStreet.
 
@@ -38,7 +38,7 @@ data_root/
 Example:
 
 ```text
-datasets/processed/GeoDE/
+GeoDE/
   train/
     africa/
       backpack/
@@ -69,8 +69,8 @@ The most important fields are:
 
 ```yaml
 paths:
-  data_root: D:/Project/DAP_paper/datasets/processed/GeoDE
-  output_dir: /results/geode/convnext
+  data_root: processed/GeoDE
+  output_dir: results/geode/convnext
 
 model:
   key: convnextv2_base
@@ -149,7 +149,7 @@ python train.py --config configs/my_experiment.yaml
 You can override common options from the command line:
 
 ```bash
-python train.py --epochs 20 --batch-size 64 --lr 1e-4
+python train.py --epochs 10 --batch-size 32 --lr 3e-5
 ```
 
 Change dataset or output folder without editing the YAML:
