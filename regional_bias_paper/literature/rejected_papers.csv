@@ -1,7 +1,0 @@
-paper_id,title,reason_for_rejection,url,date_checked
-R001,Identifying Implicit Social Biases in Vision-Language Models,Relevant to VLM social bias but not regional object recognition; keep out of main draft unless adding a VLM social-bias paragraph,https://arxiv.org/abs/2411.00997,2026-06-20
-R002,Mapping Bias in Vision Language Models: Signposts Pitfalls and the Road Ahead,Useful VLM fairness background but not directly tied to GeoDE Dollar Street or object-region metrics,https://arxiv.org/abs/2410.13146,2026-06-20
-R003,Scaling for Fairness? Analyzing Model Size Data Composition and Multilinguality in Vision-Language Bias,Demographic VLM fairness focus; weak connection to regional object recognition,https://arxiv.org/abs/2501.13223,2026-06-20
-R004,Locating Demographic Bias at the Attention-Head Level in CLIP's Vision Encoder,Mechanistic demographic-bias audit is too narrow for this paper's regional benchmark focus,https://arxiv.org/abs/2603.11793,2026-06-20
-R005,Auditing and Mitigating Bias in Gender Classification Algorithms: A Data-Centric Approach,Face/gender classification paper with weak connection to regional object recognition,https://arxiv.org/abs/2510.17873,2026-06-20
-R006,Spoken ObjectNet: A Bias-Controlled Spoken Caption Dataset,Audio-visual captioning benchmark is adjacent but not needed for this paper's image-classification argument,https://arxiv.org/abs/2110.07575,2026-06-20

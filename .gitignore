@@ -3,4 +3,4 @@ datasets/
 *.pyc
 *.pth
 kaggle.json
-regional_bias_paper/
+paper/
